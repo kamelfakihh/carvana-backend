@@ -5,16 +5,17 @@ const {
     updateCar,
     deleteCar
 } = require('../controllers/carsController.js')
+
 const Router = require('express').Router;
  
 // initialize express router
 const carsRouter = Router();
 
-// GET request for a list of all cars 
-carsRouter.get('/', getCars);
-
 // GET request for one car (specified by its ID)
 carsRouter.get('/:id', getCar);
+
+// GET request for a list of all cars 
+carsRouter.get('/', getCars);
 
 // POST request to add a car
 carsRouter.post('/add', addCar);
