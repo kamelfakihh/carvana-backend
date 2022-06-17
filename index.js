@@ -1,7 +1,9 @@
 const express = require('express');
-const carsRouter = require('./routes/carsRoute.js');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+
+const carsRouter = require('./routes/carsRoute.js');
+const usersRouter = require('./routes/usersRoute.js');
 
 dotenv.config();
 const { 
@@ -44,6 +46,7 @@ async function startServer(){
 
         // initialize routes
         app.use('/cars', carsRouter);      
+        app.use('/users', usersRouter);      
 
         // start listening for requests
         app.listen(PORT, () => console.log(`listening on port ${PORT}`));
