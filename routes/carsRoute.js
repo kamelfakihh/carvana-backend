@@ -6,6 +6,8 @@ const {
     deleteCar
 } = require('../controllers/carsController.js')
 
+const {authenticateToken} = require('../auth/auth.js');
+
 const Router = require('express').Router;
  
 // initialize express router
@@ -18,12 +20,12 @@ carsRouter.get('/:id', getCar);
 carsRouter.get('/', getCars);
 
 // POST request to add a car
-carsRouter.post('/add', addCar);
+carsRouter.post('/add', authenticateToken, addCar);
 
 // PUT request to update a car 
-carsRouter.put('/:id/update', updateCar);
+carsRouter.put('/:id/update', authenticateToken, updateCar);
 
 // DELETE request to delete a car
-carsRouter.delete('/:id/delete', deleteCar);
+carsRouter.delete('/:id/delete', authenticateToken, deleteCar);
 
 module.exports = carsRouter;
